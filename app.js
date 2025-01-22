@@ -7,7 +7,7 @@ const resultado = document.getElementById("resultado");
 // Arreglo para almacenar los nombres
 let amigos = [];
 
-// Función para agregar amigos a la lista
+// Función agregar amigos a la lista
 function agregarAmigo() {
     const nombreAmigo = inputAmigo.value.trim(); // Eliminamos espacios en blanco
 
@@ -16,7 +16,7 @@ function agregarAmigo() {
         return;
     }
 
-    // Agregar el nombre al arreglo y actualizar la lista visual
+    // Agregar el nombre al arreglo y actualizar la lista
     amigos.push(nombreAmigo);
     actualizarLista();
 
@@ -33,25 +33,12 @@ function actualizarLista() {
         li.textContent = amigo;
         li.classList.add("name-item");
 
-        // Botón para eliminar un amigo específico
-        //const buttonEliminar = document.createElement("button");
-        //buttonEliminar.textContent = "X";
-        //buttonEliminar.classList.add("button-delete");
-        //buttonEliminar.setAttribute("aria-label", `Eliminar a ${amigo}`);
-        //buttonEliminar.onclick = () => eliminarAmigo(index);
-
-        //li.appendChild(buttonEliminar);
+       
         listaAmigos.appendChild(li);
     });
 }
 
-// Función para eliminar un amigo de la lista
-function eliminarAmigo(index) {
-    amigos.splice(index, 1); // Eliminar el amigo del arreglo
-    actualizarLista();
-}
-
-// Función para sortear un amigo
+// Función sortear un amigo
 function sortearAmigo() {
     if (amigos.length === 0) {
         alert("No hay nombres en la lista para sortear.");
@@ -62,16 +49,16 @@ function sortearAmigo() {
     const indiceAleatorio = Math.floor(Math.random() * amigos.length);
     const amigoSeleccionado = amigos[indiceAleatorio];
 
-    // Mostrar el resultado en la página
+    // Mostrar el resultado
     resultado.innerHTML = `<p>El amigo secreto es: <strong>${amigoSeleccionado}</strong></p>`;
 
-    // Reiniciar el juego después de un breve retraso
+    // Reiniciar el juego después de un retraso
     setTimeout(() => {
         reiniciarJuego();
     }, 2000);
 }
 
-// Función para reiniciar el juego
+// Función reiniciar el juego
 function reiniciarJuego() {
     amigos = [];
     actualizarLista();
